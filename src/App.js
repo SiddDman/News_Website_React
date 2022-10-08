@@ -25,13 +25,25 @@ const App = () => {
   //   this.setState({ progress: progress })
   // }
   const [progress, setProgress] = useState(0)
+  const [mode, setMode] = useState('light');//whether dark mode is on or not
+
+  const toggleMode = () => {
+    if (mode === 'dark') {
+      setMode('light')
+      document.body.style.backgroundColor = 'white'
+    }
+    else {
+      setMode('dark')
+      document.body.style.backgroundColor = '#000000'
+    }
+  }
 
   // render() {//render() - renders HTML on the screen
   return (
     <div>
       <Router>
         {/* <Navbar pageSize={this.pageSize} /> */}
-        <Navbar pageSize={pageSize} />
+        <Navbar pageSize={pageSize} mode={mode} toggleMode={toggleMode} />
         <LoadingBar
           color='#f11946'
           height={3}
@@ -47,14 +59,14 @@ const App = () => {
           <Route exact path="/science" element={<News setProgress={this.setProgress} apiKey={this.apiKey} key="science" pageSize={this.pageSize} country="in" category="science" />} />
           <Route exact path="/technology" element={<News setProgress={this.setProgress} apiKey={this.apiKey} key="technology" pageSize={this.pageSize} country="in" category="technology" />} />
           <Route exact path="/sports" element={<News setProgress={this.setProgress} apiKey={this.apiKey} key="sports" pageSize={this.pageSize} country="in" category="sports" />} /> */}
-          <Route exact path="/" element={<News setProgress={setProgress} apiKey={apiKey} key="general" pageSize={pageSize} country="in" category="general" />} />
-          <Route exact path="/business" element={<News setProgress={setProgress} apiKey={apiKey} key="business" pageSize={pageSize} country="in" category="business" />} />
-          <Route exact path="/entertainment" element={<News setProgress={setProgress} apiKey={apiKey} key="entertainment" pageSize={pageSize} country="in" category="entertainment" />} />
-          <Route exact path="/general" element={<News setProgress={setProgress} apiKey={apiKey} key="general" pageSize={pageSize} country="in" category="general" />} />
-          <Route exact path="/health" element={<News setProgress={setProgress} apiKey={apiKey} key="health" pageSize={pageSize} country="in" category="health" />} />
-          <Route exact path="/science" element={<News setProgress={setProgress} apiKey={apiKey} key="science" pageSize={pageSize} country="in" category="science" />} />
-          <Route exact path="/technology" element={<News setProgress={setProgress} apiKey={apiKey} key="technology" pageSize={pageSize} country="in" category="technology" />} />
-          <Route exact path="/sports" element={<News setProgress={setProgress} apiKey={apiKey} key="sports" pageSize={pageSize} country="in" category="sports" />} />
+          <Route exact path="/" element={<News setProgress={setProgress} mode={mode} apiKey={apiKey} key="general" pageSize={pageSize} country="in" category="general" />} />
+          <Route exact path="/business" element={<News setProgress={setProgress} mode={mode} apiKey={apiKey} key="business" pageSize={pageSize} country="in" category="business" />} />
+          <Route exact path="/entertainment" element={<News setProgress={setProgress} mode={mode} apiKey={apiKey} key="entertainment" pageSize={pageSize} country="in" category="entertainment" />} />
+          <Route exact path="/general" element={<News setProgress={setProgress} mode={mode} apiKey={apiKey} key="general" pageSize={pageSize} country="in" category="general" />} />
+          <Route exact path="/health" element={<News setProgress={setProgress} mode={mode} apiKey={apiKey} key="health" pageSize={pageSize} country="in" category="health" />} />
+          <Route exact path="/science" element={<News setProgress={setProgress} mode={mode} apiKey={apiKey} key="science" pageSize={pageSize} country="in" category="science" />} />
+          <Route exact path="/technology" element={<News setProgress={setProgress} mode={mode} apiKey={apiKey} key="technology" pageSize={pageSize} country="in" category="technology" />} />
+          <Route exact path="/sports" element={<News setProgress={setProgress} mode={mode} apiKey={apiKey} key="sports" pageSize={pageSize} country="in" category="sports" />} />
 
         </Routes>
       </Router>
