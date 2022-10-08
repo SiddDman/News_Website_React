@@ -3,7 +3,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 // export class Navbar extends Component {
-const Navbar = () => {
+const Navbar = (props) => {
     let query = " "
     const handleOnChange = (event) => {
         query = event.target.value;
@@ -62,6 +62,12 @@ const Navbar = () => {
                                 <Link className="nav-link" to="/sports">Sports</Link>
                             </li>
                         </ul>
+                        <i className="fa-regular fa-sun" style={{ marginRight: '10px', fontSize: '20px', color: 'white' }} ></i>
+                        <div className={`form-check form-switch text-${props.mode === 'light' ? 'dark' : 'light'}`}>
+                            <input className="form-check-input" onClick={props.toggleMode} type="checkbox" role="switch" id="flexSwitchCheckDefault" />
+                        </div>
+                        <i className="fa-regular fa-moon" style={{ marginRight: '10px', fontSize: '20px', color: 'white' }} ></i>
+
                         <form className="d-flex" role="search">
                             <input
                                 className="form-control me-2"

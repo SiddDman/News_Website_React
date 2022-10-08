@@ -110,7 +110,7 @@ const News = (props) => {
     return (
         <>
             {/* <h1 className="container text-center my-4">RocketNews - Top {this.capitalizeFirstLetter(props.category)} Headlines</h1> */}
-            <h1 className="text-center" style={{ margin: '35px 0px', marginTop: '80px' }}>RocketNews - Top {capitalizeFirstLetter(props.category)} Headlines</h1>
+            <h1 className="text-center" style={{ margin: '35px 0px', marginTop: '80px', color: props.mode === 'light' ? 'black' : 'white' }}>RocketNews - Top {capitalizeFirstLetter(props.category)} Headlines</h1>
             {/* {this.state.loading && <Spinner />} */}
             {loading && <Spinner />}
             <InfiniteScroll
@@ -122,12 +122,12 @@ const News = (props) => {
                 hasMore={articles.length !== totalResults}
                 loader={<h4> <Spinner /> </h4>}
             >
-                <div className="container">
-                    <div className="row">
+                <div className="container" >
+                    <div className="row" >
                         {/* {this.state.articles.map((element) => { */}
                         {articles.map((element) => {
                             return <div className="col-md-4" key={element.url}>
-                                <NewsItem title={element.title ? element.title : ""} description={element.description ? element.description : ""}
+                                <NewsItem mode={props.mode} title={element.title ? element.title : ""} description={element.description ? element.description : ""}
                                     imgUrl={element.urlToImage} newsUrl={element.url} author={element.author} date={element.publishedAt} source={element.source.name} />
                             </div>
                         })}
